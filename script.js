@@ -8,6 +8,17 @@ let drinksList = [
 
 const tablazat = document.getElementById("tablazat");
 
-for (const drink in drinksList) {
-    
+for (const drink of drinksList) {
+    const tr = document.createElement("tr");
+    const nev = document.createElement("td");
+    const ar = document.createElement("td");
+
+    nev.innerText = drink.name;
+    ar.innerText = drink.price;
+
+    console.log(drink.name)
+    tr.appendChild(nev);
+    tr.appendChild(ar);
+    tablazat.appendChild(tr);
 }
+
