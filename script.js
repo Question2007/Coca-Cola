@@ -22,3 +22,22 @@ for (const drink of drinksList) {
     tablazat.appendChild(tr);
 }
 
+const form = document.getElementById("form");
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const name = document.getElementById("nev").value;
+    const ar = document.getElementById("ar").value;
+
+    const row = document.createElement("tr");
+    const name_td = document.createElement("td");
+    const ar_td = document.createElement("td");
+
+
+    name_td.innerText = name;
+    ar_td.innerText = ar;
+
+    row.appendChild(name_td);
+    row.appendChild(ar_td);
+    tablazat.appendChild(row);
+
+});
