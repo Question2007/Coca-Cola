@@ -25,19 +25,38 @@ for (const drink of drinksList) {
 const form = document.getElementById("form");
 form.addEventListener("submit", function(event) {
     event.preventDefault();
+    const nev_error = document.getElementById("nev_error")
+    const ar_error = document.getElementById("ar_error")
     const name = document.getElementById("nev").value;
     const ar = document.getElementById("ar").value;
+    if (name == "") {
+        nev_error.innerText = "Töltsd ki a név mezőt!"
+    }
+    else if (ar == "") {
+        ar_error.innerText = "Töltsd ki az ár mezőt!"
+    }
+    else if (ar < 0) {
+        ar_error.innerText = "Az ár mező nem lehet negatív!"
+    }
+    else if (ar % 10 != 0) {
+        ar_error.innerText = "Az ár mezőnek oszthatónak kell lennie tízzel (Kerek szám)!"
+    }
+    else {
+        nev_error.innerText = "";
+        ar_error.innerText = "";
+        const row = document.createElement("tr");
+        const name_td = document.createElement("td");
+        const ar_td = document.createElement("td");
 
-    const row = document.createElement("tr");
-    const name_td = document.createElement("td");
-    const ar_td = document.createElement("td");
 
+        name_td.innerText = name;
+        ar_td.innerText = ar;
 
-    name_td.innerText = name;
-    ar_td.innerText = ar;
+        row.appendChild(name_td);
+        row.appendChild(ar_td);
+        tablazat.appendChild(row);
+    }
 
-    row.appendChild(name_td);
-    row.appendChild(ar_td);
-    tablazat.appendChild(row);
+    
 
 });
