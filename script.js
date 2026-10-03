@@ -22,18 +22,47 @@ for (const drink of drinksList) {
     tablazat.appendChild(tr);
 }
 
+//Validálás
 const form = document.getElementById("form");
+const nev_error = document.getElementById("nev_error")
+const ar_error = document.getElementById("ar_error")
+
+const nev_input = document.getElementById("nev")
+const ar_input = document.getElementById("ar")
+
+nev_input.addEventListener("input", function() {
+    const nev = document.getElementById("nev").value;
+    console.log(this.value)
+    if (nev != "") {
+        nev_error.innerText = ""
+        
+    }
+    
+    
+})
+
+ar_input.addEventListener("input", function() {
+    const ar = document.getElementById("ar").value;
+    console.log(this.value)
+
+    if (ar >= 0 && ar % 10 == 0) {
+    }
+
+    
+})
+
 form.addEventListener("submit", function(event) {
     event.preventDefault();
-    const nev_error = document.getElementById("nev_error")
-    const ar_error = document.getElementById("ar_error")
-    const name = document.getElementById("nev").value;
+    const nev = document.getElementById("nev").value;
     const ar = document.getElementById("ar").value;
-    if (name == "") {
+
+    if (nev == "") {
         nev_error.innerText = "Töltsd ki a név mezőt!"
+        
     }
-    else if (ar == "") {
+    if (ar == "") {
         ar_error.innerText = "Töltsd ki az ár mezőt!"
+        
     }
     else if (ar < 0) {
         ar_error.innerText = "Az ár mező nem lehet negatív!"
@@ -49,7 +78,7 @@ form.addEventListener("submit", function(event) {
         const ar_td = document.createElement("td");
 
 
-        name_td.innerText = name;
+        name_td.innerText = nev;
         ar_td.innerText = ar;
 
         row.appendChild(name_td);
