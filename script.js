@@ -32,7 +32,6 @@ const ar_input = document.getElementById("ar")
 
 nev_input.addEventListener("input", function() {
     const nev = document.getElementById("nev").value;
-    console.log(this.value)
     if (nev != "") {
         nev_error.innerText = ""
         
@@ -43,9 +42,8 @@ nev_input.addEventListener("input", function() {
 
 ar_input.addEventListener("input", function() {
     const ar = document.getElementById("ar").value;
-    console.log(this.value)
-
     if (ar >= 0 && ar % 10 == 0) {
+        ar_error.innerText = ""
     }
 
     
